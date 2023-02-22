@@ -2,7 +2,6 @@
 session_start();
 if(isset($_SESSION['clave'])){
     session_destroy();
-    setcookie('PHPSESSID',"",time()-1);
     session_start();
 }
 $carga = fn($clase)=>require_once "$clase.php";
@@ -36,7 +35,7 @@ spl_autoload_register($carga);
         </ol>
         <hr/>
         <form action="jugar.php">
-            <input type="submit" value="Empezar a jugar">
+            <button type="submit" value="iniciar">Empezar a Jugar</button>
         </form>
     </div>
 </div>
