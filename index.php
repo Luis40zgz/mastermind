@@ -34,8 +34,8 @@ spl_autoload_register($carga);
             <li>No se especificará cuáles son las posiciones acertadas en caso de acierto.</li>
         </ol>
         <hr/>
-        <form action="jugar.php">
-            <button type="submit" value="iniciar">Empezar a Jugar</button>
+        <form action="jugar.php" method="post">
+            <button type="submit" name="submit" value="iniciar">Empezar a Jugar</button>
         </form>
     </div>
 </div>

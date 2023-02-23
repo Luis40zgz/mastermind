@@ -3,7 +3,7 @@ $carga = fn($clase)=>require_once "$clase.php";
 spl_autoload_register($carga);
 
 
-/*$opcion =$_POST['submit']??"";
+$opcion =$_POST['submit']??"";
 switch($opcion){
     case "iniciar":
 
@@ -12,6 +12,7 @@ switch($opcion){
     case "jugar":
         break;
     case "mostrar":
+
         break;
     case "ocultar":
         break;
@@ -19,9 +20,9 @@ switch($opcion){
         break;
 
     default:
-    header("location:index.php")
+    header("location:index.php");
     exit();
-}*/
+}
 ?>
 <html lang="en">
 <head>
