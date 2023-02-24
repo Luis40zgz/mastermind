@@ -7,9 +7,10 @@ class Plantilla
         $colores = Clave::COLORES;
         $formulario = '<form action="jugar.php" method="POST"><fieldset><legend>Menú jugar</legend><h3> Selecciona 4 colores para jugar</h3>';
         for($i = 0;$i < 4;$i++){
-            $formulario .= "<select onchange='cambia_color($i)'  name='combinacion[]' id='combinacion$i'><option value='' selected disabled hidden>Color</option>";
+            $formulario .= "<select onchange='cambia_color($i)'  class='{$_POST['combinacion'][$i]}' name='combinacion[]' id='combinacion$i'><option value='' selected disabled hidden>Color</option>";
                 foreach($colores as $color){
-                    $formulario .= "<option class=\"$color\" value='$color'>$color</option>";
+                    $select = $color == $_POST['combinacion'][$i] ? "selected" : "";
+                    $formulario .= "<option class=\"$color\" value='$color' $select >$color</option>";
                 }
              $formulario .= "</select>";
         }
@@ -26,8 +27,11 @@ class Plantilla
         $salida .= "</div>";
         return $salida;
     }
-    /*static public function genera_información():string
+    static public function muestra_historial():string
     {
-        if
-    }*/
+        $salida = "<div><p>Jugada actual {$_SESSION['numero_jugada']}</p><p>Resultado: </p>";
+        foreach($_SESSION['juagada'] as $jugada)
+            $salida .= $jugada;
+        return $salida .= "</div>";
+    }
 }
