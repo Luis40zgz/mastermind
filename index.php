@@ -2,7 +2,6 @@
 session_start();
 if(isset($_SESSION['clave'])){
     session_destroy();
-    setcookie('PHPSESSID',"",time()-1);
     session_start();
 }
 $carga = fn($clase)=>require_once "$clase.php";
@@ -20,7 +19,7 @@ spl_autoload_register($carga);
 <div class="containerIndex">
 
     <div class="presentacion">
-        <h2>DESCRIPCIÓN DEL JUEGO DE MASTER BIND</h2>
+        <h2>DESCRIPCIÓN DEL JUEGO DE MASTER-MIND</h2>
         <hr/>
         <ol>
             <li>Esta es una presentación personalizada del juego.</li>
@@ -35,8 +34,8 @@ spl_autoload_register($carga);
             <li>No se especificará cuáles son las posiciones acertadas en caso de acierto.</li>
         </ol>
         <hr/>
-        <form action="jugar.php">
-            <input type="submit" value="Empezar a jugar">
+        <form action="jugar.php" method="post">
+            <input type="submit" name="submit" value="Empezar a jugar">
         </form>
     </div>
 </div>

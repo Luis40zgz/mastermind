@@ -1,7 +1,5 @@
 <?php
-$carga = fn($clase)=>require_once "$clase.php";
-spl_autoload_register($carga);
-$plantilla = new Plantilla;
+require "controlador.php";
 ?>
 <!doctype html>
 <html lang="es">
@@ -14,7 +12,32 @@ $plantilla = new Plantilla;
     <title>Document</title>
 </head>
 <body>
-<?= $plantilla -> genera_formulario_juego();?>
+<header></header>
+<main>
+    <div class="contenedorJugar">
+        <div class="opciones">
+            <section>
+                <form action="jugar.php" method="POST">
+                    <fieldset>
+                        <legend>Acciones posibles</legend>
+                        <input type="submit" value="<?=$mostrar_ocultar_clave?>" name="submit">
+                        <input type="submit" value="Resetear la Clave" name="submit">
+                    </fieldset>
+                </form>
+            </section>
+            <section>
+                <h2>Opciones</h2>
+                <div></div>
+                <div><?= $plantilla -> genera_formulario_juego();?></div>
+                <?= $warning ?? "";?>
+            </section>
+        </div>
+        <div class="informacion">
+            <h2>Información</h2>
+            <?= $informacion;?>
+        </div>
+    </div>
+</main>
 <script src="js/script.js"></script>
 </body>
 </html>
